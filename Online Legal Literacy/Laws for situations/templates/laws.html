@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html>
+    <style>
+    hr
+    {
+    width: 80%;
+    height: 2px;
+    background-color: pink;
+    margin-bottom: 7px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 9px;
+    border-width: 4px;
+    border-color: white;
+    }
+    p {
+      background-color: #000000;
+
+    }
+    </style>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Mini Project</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/reset.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/simplegrid.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/icomoon.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/lightcase.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='js/owl-carousel/owl.carousel.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='js/owl-carousel/owl.theme.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='js/owl-carousel/owl.transitions.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='./style.css') }}">
+
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <script>
+        function sendData(i) {
+          console.log(i)
+          var myDivs = document.querySelectorAll('.myDiv');
+          var data = myDivs[i].querySelector('p').innerHTML;
+          console.log(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/summary");
+          xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          xhr.onload = function() {
+            if (xhr.status === 200) {
+              console.log("Data received by Flask app");
+            }
+          };
+          xhr.send(JSON.stringify({ data: data }));
+        }
+        </script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+           <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+           <!--[if lt IE 9]>
+             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+           <![endif]-->
+        </head>
+        <body id="home">
+            <div class="parallax-section parallax1">
+                <div class="grid grid-pad">
+                    <div class="col-1-1">
+                         <div class="content content-header" >
+                            <h2>Matches!...</h2>
+                            <div class="input-group mb-3">
+                                {% for i in matches %}
+                                    <h3 style="font-color: lightblue">Section: </h3><p style="padding: 35px; border-radius: 25px">{{ i[0] }}</p>
+                                    <h3>Title: </h3><p style="padding: 35px; border-radius: 25px">{{ i[1] }}</p>
+                                    <h3>Description: </h3><div class="myDiv"><p id="{{i}}" style="padding: 35px; border-radius: 25px">{{ i[2] }}</p></div>
+                                    <input type="submit" value="Summary" style="height:40px; width:100px" onclick="sendData({{loop.index-1}})" >
+                                    <form action="{{ url_for('final')}}" method = "post">
+                                    <input type="submit" value="Show"  style="height:40px; width:100px">
+                                    </form>
+<!--                                    <p id="Summary">{{ summary[loop.index-1] }}</p>-->
+                                    <hr>
+                                    <br><br>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Parallax Section -->
+
+
+
+            <div class="loader-overlay">
+                <div class="loader">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+
+                <!-- Footer -->
+<!--                <footer class="wrap">-->
+<!--                    <div class="grid grid-pad" >-->
+<!--                            <div class="content">-->
+<!--                                <div class="footer-widget">-->
+<!--                                    <h3>Explanation</h3>-->
+<!--                                    <div class="textwidget">-->
+<!--                                        <p>Steganography is the technique of hiding secret data within an ordinary, non-secret, file or message in order to avoid detection </p><br>-->
+<!--                                        <p>The secret data is then extracted at its destination.</p><br>-->
+<!--                                        <p>If same data is extracted at the destination then there is no attacks</p><br>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                </footer>-->
+                <!-- End Footer -->
+
+                <div class="loader-overlay">
+                    <div class="loader">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+
+                <!-- JS -->
+                <script src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/main.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/mixitup.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/smoothscroll.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/jquery.nav.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/owl-carousel/owl.carousel.min.js') }}"></script>
+                <script src="https://maps.googleapis.com/maps/api/js"></script>
+                <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+                <script src="{{ url_for('static',filename='js/jquery.counterup.min.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/lightcase.min.js') }}"></script>
+            </body>
+        </html>

@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Mini Project</title>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/reset.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/simplegrid.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/icomoon.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/lightcase.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='js/owl-carousel/owl.carousel.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='js/owl-carousel/owl.theme.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='js/owl-carousel/owl.transitions.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='./style.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+        <script>
+        function Voice(){
+            const searchForm = document.querySelector("#search-form");
+            const searchFormInput = searchForm.querySelector("input");
+            const micBtn = searchForm.querySelector("button");
+            const micIcon = searchForm.querySelector("i");
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if(SpeechRecognition){
+                console.log("Browser Supports");
+
+                const micBtn = searchForm.querySelector("button");
+                const micIcon = searchForm.querySelector("i");
+
+                const recognition = new SpeechRecognition();
+
+                micBtn.addEventListener("click", micBtnClick);
+                function micBtnClick(){
+                    if(micIcon.classList.contains("fa-microphone")){
+                        recognition.start();
+                    }
+                    else{
+                        recognition.stop();
+                    }
+
+                    recognition.addEventListener("start", startSpeechRecognition);
+                    function startSpeechRecognition(){
+                        micIcon.classList.remove("fa-microphone");
+                        micIcon.classList.add("fa-microphone-slash");
+                        console.log("Speech Recog Active");
+                    }
+
+                    recognition.addEventListener("end", endSpeechRecognition);
+                    function endSpeechRecognition(){
+                        micIcon.classList.remove("fa-microphone-slash");
+                        micIcon.classList.add("fa-microphone");
+                        console.log("Speech Recog Ends");
+                    }
+
+                    recognition.addEventListener("result", resultofSpeechRecognition);
+                    function resultofSpeechRecognition(event){
+                        const transcript = event.results[0][0].transcript;
+                        console.log(transcript);
+                        searchFormInput.value = transcript;
+                    }
+                }
+            }
+            else{
+                console.log("Browser not supports");
+            }}
+        </script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+           <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+           <!--[if lt IE 9]>
+             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+           <![endif]-->
+        </head>
+        <body id="home">
+            <!-- Header -->
+<!--            <header id="top-header" class="header-home">-->
+<!--                <div class="grid">-->
+<!--                    <div class="col-1-1">-->
+<!--                        <div class="content">-->
+<!--                            <div class="logo-wrap">-->
+<!--                                <a href="#0" class="logo">Prject</a>-->
+<!--                            </div>-->
+<!--            -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </header>-->
+            <!-- End Header -->
+
+            <!-- Parallax Section -->
+            <div class="parallax-section parallax1">
+                <div class="grid grid-pad">
+                    <div class="col-1-1">
+                         <div class="content content-header" >
+                            <h2>Laws for situation</h2>
+                            <div class="input-group mb-3">
+<!--                                <input type="submit" value="Start Recording" id="startRecording" style="height:40px; width:100px" onclick="startRecording()">-->
+                                <form action="{{ url_for('predicts_cutoff')}}" method = "post" id="search-form">
+                                    <label for="college" style="color: white">Enter your situation</label>
+                                    <input id="college" name="college"> <button type="button" style="height:50px; width:40px" onclick="Voice()"><i class="fas fa-microphone"></i></button>
+                                    <br><br>
+                                    <input type="submit" value="Proceed"  style="height:40px; width:100px">
+                                </form>
+                              </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Parallax Section -->
+
+          
+
+            <div class="loader-overlay">
+                <div class="loader">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+
+                <!-- Footer -->
+<!--                <footer class="wrap">-->
+<!--                    <div class="grid grid-pad" >-->
+<!--                            <div class="content">-->
+<!--                                <div class="footer-widget">-->
+<!--                                    <h3>Explanation</h3>-->
+<!--                                    <div class="textwidget">-->
+<!--                                        <h5>Steganography:</h5><br>-->
+<!--                                        <p>Steganography is the technique of hiding secret data within an ordinary, non-secret, file or message in order to avoid detection </p><br>-->
+<!--                                        <p>The secret data is then extracted at its destination.</p><br>-->
+<!--                                        <p>If the data is extracted at the destination then there is no attacks</p><br>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        -->
+<!--                        -->
+<!--                </footer>-->
+                <!-- End Footer -->
+
+                <div class="loader-overlay">
+                    <div class="loader">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+
+                <!-- JS -->
+                <script src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/main.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/mixitup.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/smoothscroll.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/jquery.nav.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/owl-carousel/owl.carousel.min.js') }}"></script>
+                <script src="https://maps.googleapis.com/maps/api/js"></script>
+                <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+                <script src="{{ url_for('static',filename='js/jquery.counterup.min.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/lightcase.min.js') }}"></script>
+            </body>
+        </html>
