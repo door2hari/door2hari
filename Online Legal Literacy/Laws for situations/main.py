@@ -98,7 +98,7 @@ def all():
     return title
 
 def sums(text):
-    openai.api_key = "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"
+    openai.api_key = "Your API KEY"
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
