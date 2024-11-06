@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Automated Weather Classification</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/templatemo-festava-live.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap" rel="stylesheet" type='text/css'>
+
+<!--    <link href="css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="css/bootstrap-icons.css" rel="stylesheet">-->
+<!--    <link href="css/templatemo-festava-live.css" rel="stylesheet">-->
+
+    <script>
+        function scrollToDiv()
+        {
+            var divElement = document.getElementById("myDiv");
+            divElement.scrollIntoView({ behavior: "smooth" });
+        }
+        function scrollToDiv2()
+        {
+            var divElement = document.getElementById("myDiv2");
+            divElement.scrollIntoView({ behavior: "smooth" });
+        }
+
+        function openinput(){
+        window.location.href = "/input";
+        }
+        
+    </script>
+    
+    <!--
+
+TemplateMo 583 Festava Live
+
+https://templatemo.com/tm-583-festava-live
+
+-->
+</head>
+
+<body>
+
+    <main>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('home')}}">
+                    Smartbridge
+                </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" >About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" onclick="scrollToDiv2()">Images</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" onclick="openinput()">Predict</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <section class="hero-section" id="section_1">
+            <div class="section-overlay"></div>
+
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="row">
+
+                    <div class="col-12 mt-auto mb-5 text-center">
+
+                        <h1 class="text-white mb-5">Weather Classification Using Transfer Learning</h1>
+                        <small>Through this project we will be able to classify the type of weather</small>
+                        <br><br><br>
+                        <a class="btn custom-btn smoothscroll" onclick="scrollToDiv()">FEW DETAILS</a>
+                    </div>
+                </div>
+            </div>
+            <div id="myDiv" style="background-color: rgb(244, 98, 58);text-align: center;">
+                <h2 style="text-align: center;color: white; padding-top: 150px;">Weather</h2>
+                <br>
+                <p style="color: white; margin-left: 300px; margin-right: 300px;padding-bottom: 50px;">
+                    Weather image recognition is a task that involves training a model to recognize and classify different types of weather from images or video frames. This could include identifying specific weather conditions such as clear, cloudy, rainy or snowy
+                </p>
+                <a class="btn custom-btn smoothscroll" style="background-color: white; color: black;" onclick="scrollToDiv2()">Types of Weather</a>
+                <p style="padding-bottom: 150px;"></p>
+            </div>
+            <div id="myDiv2" style="background-color: darkcyan;text-align: center; overflow: auto;height:108vh;">
+                <h2 style="text-align: center;color: black; padding-top: 100px;padding-bottom: 100px;">Images</h2>
+
+                <div class="grid-container" style="padding-bottom: 200px;">
+                    <div class="grid-item">
+                        <img src="{{ url_for('static',filename='rain1.jpg') }}" alt="rainy">
+<!--                        <img src="rain1.jpg" alt="rainy">-->
+                        <div class="category">Category : Rainy</div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="{{ url_for('static',filename='cloudy8.jpg') }}" alt="cloudy">
+<!--                        <img src="cloudy8.jpg" alt="cloudy">-->
+                        <div class="category">Category : Cloudy</div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="{{ url_for('static',filename='foggy4.jpeg') }}" alt="foggy">
+<!--                        <img src="foggy4.jpeg" alt="foggy">-->
+                        <div class="category">Category : Foggy</div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="{{ url_for('static',filename='shine1.jpg') }}" alt="shine">
+<!--                        <img src="shine1.jpg" alt="shine">-->
+                        <div class="category">Category : Shine</div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="{{ url_for('static',filename='sunrise1.jpg') }}" alt="sunrise">
+<!--                        <img src="sunrise1.jpg" alt="sunrise">-->
+                        <div class="category">Category : Sunrise</div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="{{ url_for('static',filename='cloudy108.jpg') }}" alt="cloudy">
+<!--                        <img src="cloudy108.jpg" alt="cloudy">-->
+                        <div class="category">Category : Cloudy</div>
+                    </div>
+                  </div>
+
+            </div>
+            <div class="video-wrap">
+                <img src="{{ url_for('static',filename='Background.png') }}" alt="Home" class="custom-video">
+<!--                <img src="Background.png" alt="Home" class="custom-video">-->
+            </div>
+        </section>
+
+    <!--
+
+T e m p l a t e M o
+
+-->
+
+    <!-- JAVASCRIPT FILES -->
+        <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/jquery.sticky.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/click-scroll.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+<!--    <script src="js/jquery.min.js"></script>-->
+<!--    <script src="js/bootstrap.min.js"></script>-->
+<!--    <script src="js/jquery.sticky.js"></script>-->
+<!--    <script src="js/click-scroll.js"></script>-->
+<!--    <script src="js/custom.js"></script>-->
+
+    </main>
+</body>
+
+</html>

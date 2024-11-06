@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Automated Weather Classification</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/templatemo-festava-live.css') }}">
+
+    <script>
+        function openinput()
+        {
+            window.location.href = "/input";
+        }
+        function scrollToDiv()
+        {
+            window.location.href = "/predict";
+        }
+    </script>
+<!--    <link href="css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="css/bootstrap-icons.css" rel="stylesheet">-->
+<!--    <link href="css/templatemo-festava-live.css" rel="stylesheet">-->
+
+    <!--
+
+TemplateMo 583 Festava Live
+
+https://templatemo.com/tm-583-festava-live
+
+-->
+</head>
+
+<body>
+
+    <main>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('home')}}">
+                    Smartbridge
+                </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" >About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" onclick="scrollToDiv2()">Images</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" onclick="openinput()">Predict</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <section class="hero-section" id="section_1" style="background-color: black;">
+            <div class="section-overlay"></div>
+
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="row">
+
+                    <div class="col-12 mt-auto mb-5 text-center">
+
+                        <h1 class="text-white mb-5">{{prediction}}</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!--
+
+T e m p l a t e M o
+
+-->
+
+    <!-- JAVASCRIPT FILES -->
+        <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/jquery.sticky.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/click-scroll.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+<!--    <script src="js/jquery.min.js"></script>-->
+<!--    <script src="js/bootstrap.min.js"></script>-->
+<!--    <script src="js/jquery.sticky.js"></script>-->
+<!--    <script src="js/click-scroll.js"></script>-->
+<!--    <script src="js/custom.js"></script>-->
+    </main>
+</body>
+
+</html>
